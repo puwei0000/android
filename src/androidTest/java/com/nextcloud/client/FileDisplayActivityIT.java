@@ -37,14 +37,12 @@ import com.owncloud.android.lib.resources.shares.ShareType;
 import com.owncloud.android.operations.CreateFolderOperation;
 import com.owncloud.android.ui.activity.FileDisplayActivity;
 import com.owncloud.android.ui.events.SearchEvent;
-import com.owncloud.android.utils.ScreenshotTest;
 
 import org.greenrobot.eventbus.EventBus;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
-import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.espresso.contrib.NavigationViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
@@ -156,32 +154,5 @@ public class FileDisplayActivityIT extends AbstractOnServerIT {
         // then should be in root again
         shortSleep();
         assertEquals(getStorageManager().getFileByPath("/"), sut.getCurrentDir());
-    }
-
-    @Test
-    @ScreenshotTest
-    public void showMediaThenAllFiles() {
-        FileDisplayActivity sut = activityRule.launchActivity(null);
-
-        // open drawer
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
-
-        // click "all files"
-        onView(withId(R.id.nav_view))
-            .perform(NavigationViewActions.navigateTo(R.id.nav_gallery));
-
-        // wait
-        shortSleep();
-        waitForIdleSync();
-
-        // click "all files"
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
-        onView(withId(R.id.nav_view)).perform(ViewActions.swipeUp());
-        onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_all_files));
-
-        // then compare screenshot
-        shortSleep();
-        shortSleep();
-        screenshot(sut);
     }
 }
