@@ -19,6 +19,7 @@
  */
 package com.nextcloud.client.media
 
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
@@ -35,7 +36,6 @@ import com.owncloud.android.datamodel.OCFile
 import com.owncloud.android.ui.notifications.NotificationUtils
 import com.owncloud.android.utils.ThemeUtils
 import dagger.android.AndroidInjection
-import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 class PlayerService : Service() {
@@ -101,6 +101,13 @@ class PlayerService : Service() {
         stop.action = ACTION_STOP
         val pendingStop = PendingIntent.getService(this, 0, stop, 0)
         notificationBuilder.addAction(0, "STOP", pendingStop)
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            notificationBuilder.setChannelId(NotificationUtils.NOTIFICATION_CHANNEL_MEDIA)
+        }
+
+        val notification = notificationBuilder.build()
+        startForeground(123123, notification)
     }
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -147,6 +154,7 @@ class PlayerService : Service() {
             notificationBuilder.setChannelId(NotificationUtils.NOTIFICATION_CHANNEL_MEDIA)
         }
 
-        startForeground(R.string.media_notif_ticker, notificationBuilder.build())
+        val notificationManager = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(123123, notificationBuilder.build())
     }
 }
