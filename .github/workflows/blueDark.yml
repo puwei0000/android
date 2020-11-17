@@ -1,4 +1,4 @@
-name: "Test screenshot: Blue color on dark mode"
+name: "Blue color on dark mode"
 
 on:
     push:
