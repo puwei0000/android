@@ -899,7 +899,7 @@
     <string name="sync_not_enough_space_dialog_action_free_space">Free up space</string>
     <string name="sync_not_enough_space_dialog_placeholder">%1$s is %2$s, but there is only %3$s available on device.</string>
     <string name="sync_not_enough_space_dialog_title">Not enough space</string>
-    <string name="conflict_message_headline">Which files do you want to keep?</string>
+    <string name="conflict_file_headline">Conflicting file %1$s</string>
     <string name="conflict_message_description">If you select both versions, the local file will have a number appended to its name.</string>
     <string name="conflict_new_file">New file</string>
     <string name="conflict_already_existing_file">Already existing file</string>
@@ -946,4 +946,6 @@
     <string name="fourHours">4 hours</string>
     <string name="thisWeek">This week</string>
     <string name="drawer_item_gallery">Media</string>
+    <string name="in">in folder %1$s</string>
+    <string name="choose_which_file">Choose which file to keep!</string>
 </resources>
