@@ -34,4 +34,4 @@ jobs:
                     GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
                     GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
                 run:
-                    scripts/uploadReport.sh "$LOG_USERNAME" "$LOG_PASSWORD" ${{github.event.number}} "Screenshot-Blue-Light" "Screenshot" ${{github.event.number}} "$GIT_USERNAME" "$GIT_TOKEN"
+                    scripts/uploadReport.sh "$LOG_USERNAME" "$LOG_PASSWORD" ${{github.event.number}} "Blue-Light" "Screenshot" ${{github.event.number}} "$GIT_USERNAME" "$GIT_TOKEN"
